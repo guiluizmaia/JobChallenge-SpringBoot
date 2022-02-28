@@ -1,5 +1,6 @@
 package com.siscred.JobChallenge.modules.users.application.web;
 
+import java.util.List;
 import java.util.UUID;
 
 import com.siscred.JobChallenge.exception.BadRequestException;
@@ -39,6 +40,20 @@ public class UserController {
             throw new BadRequestException("Error creating a User");
         }     
     }
+
+    @GetMapping
+    public ResponseEntity findAll() {
+        List<User> users  = this.userService.findAll();
+        return ResponseEntity.status(HttpStatus.OK).body(users);        
+    }
+/*
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity getById(@PathVariable(value = "cpf") String cpf) {
+        User user  = this.userService.findById(id).orElseThrow(
+            () -> new ResourceNotFoundException("User", "ID", id)
+        );
+        return ResponseEntity.status(HttpStatus.OK).body(user);        
+    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable(value = "id") UUID id) {

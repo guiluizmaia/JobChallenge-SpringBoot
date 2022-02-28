@@ -5,6 +5,11 @@ import java.util.UUID;
 
 import com.siscred.JobChallenge.modules.schedule.domain.entity.VoteSchedule;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class VoteScheduleDTO implements Serializable {
     private UUID userId;
     private UUID scheduleId;

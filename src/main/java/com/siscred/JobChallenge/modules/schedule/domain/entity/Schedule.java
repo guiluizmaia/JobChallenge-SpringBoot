@@ -31,6 +31,11 @@ public class Schedule {
         this.timeMin = timeMin;
         this.create = LocalDateTime.now();
     }
+
+
+    public Schedule() {
+        this.id = UUID.randomUUID();
+    }
     
 
     public UUID getId() {
