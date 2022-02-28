@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./dataMongoDB:/data
+    networks:
+      - challenge-network
+
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: ./gradlew bootRun
+    networks:
+      - challenge-network
+    depends_on:
+      - mongo
+
+networks:
+  challenge-network:
+    driver: bridge
