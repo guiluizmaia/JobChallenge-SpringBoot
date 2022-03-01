@@ -1,4 +1,4 @@
-package com.siscred.JobChallenge.conections.RabbitMQ;
+package com.siscred.JobChallenge.connections.RabbitMQ;
 
 import javax.annotation.PostConstruct;
 

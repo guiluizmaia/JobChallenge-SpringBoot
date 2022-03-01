@@ -46,14 +46,6 @@ public class UserController {
         List<User> users  = this.userService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(users);        
     }
-/*
-    @GetMapping("/cpf/{cpf}")
-    public ResponseEntity getById(@PathVariable(value = "cpf") String cpf) {
-        User user  = this.userService.findById(id).orElseThrow(
-            () -> new ResourceNotFoundException("User", "ID", id)
-        );
-        return ResponseEntity.status(HttpStatus.OK).body(user);        
-    }*/
 
     @GetMapping("/{id}")
     public ResponseEntity getById(@PathVariable(value = "id") UUID id) {

@@ -6,8 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
-import com.siscred.JobChallenge.conections.RabbitMQ.adapters.IRabbitMQAdapter;
-import com.siscred.JobChallenge.conections.RabbitMQ.adapters.RabbitMQAdapter;
+import com.siscred.JobChallenge.connections.RabbitMQ.adapters.IRabbitMQAdapter;
+import com.siscred.JobChallenge.connections.RabbitMQ.adapters.RabbitMQAdapter;
 import com.siscred.JobChallenge.modules.schedule.application.dto.ScheduleDTO;
 import com.siscred.JobChallenge.modules.schedule.domain.entity.Schedule;
 import com.siscred.JobChallenge.modules.schedule.domain.entity.VoteSchedule;

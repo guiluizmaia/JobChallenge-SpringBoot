@@ -1,4 +1,4 @@
-package com.siscred.JobChallenge.conections.RabbitMQ.adapters;
+package com.siscred.JobChallenge.connections.RabbitMQ.adapters;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
