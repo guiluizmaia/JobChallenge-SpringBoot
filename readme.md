@@ -14,7 +14,6 @@ Para iniciar, rode os containers
 ```sh
 docker-compose up --build
 ```
-O mongo ja vem com 3 usuários fakes para teste
 
 ## Estruturação de Pastas
 Dentro do JobChallenge tem  quatro pastas
@@ -82,3 +81,6 @@ Cria um voto em uma tabela separada apenas para votos, nessa chamada, antes de e
 } 
 ```
 
+
+## Para Testar
+Para testar recomendo criar 3 usuários com CPFs diferentes para pelo menos um dar o erro de não estar válido para votar, depois criar uma pauta e usar eles para votar

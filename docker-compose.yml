@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./dataMongoDB:/data
+      - ./dataMongoDB:/data/db
     networks:
       - challenge-network
 
