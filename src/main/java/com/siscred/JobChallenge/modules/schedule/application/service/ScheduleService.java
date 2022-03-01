@@ -6,6 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
+import com.siscred.JobChallenge.conections.RabbitMQ.adapters.IRabbitMQAdapter;
+import com.siscred.JobChallenge.conections.RabbitMQ.adapters.RabbitMQAdapter;
 import com.siscred.JobChallenge.modules.schedule.application.dto.ScheduleDTO;
 import com.siscred.JobChallenge.modules.schedule.domain.entity.Schedule;
 import com.siscred.JobChallenge.modules.schedule.domain.entity.VoteSchedule;
@@ -19,13 +21,17 @@ public class ScheduleService implements IScheduleService{
 
     private ScheduleRepository scheduleRepository;
     private VoteScheduleRepository voteScheduleRepository;
+    private IRabbitMQAdapter rabbitMQAdapter;
+
 
     public ScheduleService (
         ScheduleRepository scheduleRepository, 
-        VoteScheduleRepository voteScheduleRepository
+        VoteScheduleRepository voteScheduleRepository,
+        IRabbitMQAdapter rabbitMQAdapter
     ){
         this.scheduleRepository = scheduleRepository;
         this.voteScheduleRepository = voteScheduleRepository;
+        this.rabbitMQAdapter = rabbitMQAdapter;
     }
 
     @Override
@@ -82,5 +88,6 @@ public class ScheduleService implements IScheduleService{
 
         schedule.setActiveToFalse();
         this.scheduleRepository.save(schedule);
+        this.rabbitMQAdapter.sendMessage("amq.direct", "scheduleRoutingKey", schedule);
     }    
 }

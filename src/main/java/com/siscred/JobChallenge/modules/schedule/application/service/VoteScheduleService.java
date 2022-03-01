@@ -9,6 +9,7 @@ import com.siscred.JobChallenge.modules.schedule.domain.repository.ScheduleRepos
 import com.siscred.JobChallenge.modules.schedule.domain.repository.VoteScheduleRepository;
 import com.siscred.JobChallenge.modules.users.domain.entity.User;
 import com.siscred.JobChallenge.modules.users.domain.repository.UserRepository;
+import com.siscred.JobChallenge.utils.IsValidCPF.IIsAbleVoteByCPF;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,15 +21,18 @@ public class VoteScheduleService implements IVoteScheduleService {
     private VoteScheduleRepository voteScheduleRepository;
     private ScheduleRepository scheduleRepository;
     private UserRepository userRepository;
+    private IIsAbleVoteByCPF isAbleVoteByCPF;
 
     public VoteScheduleService (
         VoteScheduleRepository voteScheduleRepository,
         ScheduleRepository scheduleRepository,
-        UserRepository userRepository
+        UserRepository userRepository,
+        IIsAbleVoteByCPF isAbleVoteByCPF
     ){
         this.voteScheduleRepository = voteScheduleRepository;
         this.scheduleRepository = scheduleRepository;
         this.userRepository = userRepository;
+        this.isAbleVoteByCPF = isAbleVoteByCPF;
     }
 
     @Override
@@ -37,6 +41,12 @@ public class VoteScheduleService implements IVoteScheduleService {
 
         if (user.isPresent() == false){
             throw new ResourceNotFoundException("User", "ID", create.getUserId());
+        }
+
+        Boolean isAble = this.isAbleVoteByCPF.isAbleVoteByCPF(user.get().getCpf());
+        
+        if(!isAble){
+            throw new BadRequestException("User is not able to vote");
         }
 
         Schedule schedule = this.scheduleRepository.findById(create.getScheduleId()).orElseThrow(() -> {
@@ -52,8 +62,6 @@ public class VoteScheduleService implements IVoteScheduleService {
         }
 
         List<VoteSchedule> votes = this.voteScheduleRepository.findByUserIdAndScheduleId(create.getUserId(), create.getScheduleId());
-
-       
 
         if(votes.isEmpty() != true){
             throw new BadRequestException("User already voted");

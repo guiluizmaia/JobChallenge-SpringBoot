@@ -5,15 +5,17 @@ import java.util.UUID;
 
 import com.siscred.JobChallenge.modules.schedule.domain.entity.VoteSchedule;
 
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 public class VoteScheduleDTO implements Serializable {
     private UUID userId;
     private UUID scheduleId;
     private String response;
+
+    public VoteScheduleDTO(UUID userId, UUID scheduleId, String response) {
+        this.userId = userId;
+        this.scheduleId = scheduleId;
+        this.response = response;
+    }
 
     public VoteSchedule toEntity(){
         VoteSchedule entity = new VoteSchedule(this.userId, this.scheduleId, this.response);

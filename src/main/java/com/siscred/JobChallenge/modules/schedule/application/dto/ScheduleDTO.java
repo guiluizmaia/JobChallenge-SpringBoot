@@ -9,6 +9,11 @@ public class ScheduleDTO implements Serializable{
     private String schedule;
     private String timeMin;
 
+    public ScheduleDTO(String schedule, String timeMin) {
+        this.schedule = schedule;
+        this.timeMin = timeMin;
+    }
+
     public Schedule toEntity(){
         if(this.timeMin == null){
             this.timeMin = "1";

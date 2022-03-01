@@ -6,13 +6,9 @@ import java.util.UUID;
 
 import com.siscred.JobChallenge.modules.users.application.dto.UserDTO;
 import com.siscred.JobChallenge.modules.users.domain.entity.User;
-import com.siscred.JobChallenge.modules.users.domain.entity.isValidCpf;
 import com.siscred.JobChallenge.modules.users.domain.repository.UserRepository;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserService implements IUserService{
@@ -37,3 +33,4 @@ public class UserService implements IUserService{
     public Optional<User> findById(UUID id) {
         return this.userRepository.findById(id);
     }
+}
