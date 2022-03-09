@@ -70,13 +70,12 @@ Lista todas as pautas criadas
 ### GET - /schedule/{id}
 Lista uma pauta por seu id. Caso não exista retornará 404
 
-### POST - /schedule/vote
+### POST - /schedule/{id}/vote
 Cria um voto em uma tabela separada apenas para votos, nessa chamada, antes de efetivamente criar o voto, é verificado se o user existe, se a schedule exista, se está ativa, se o cpf do usuário é válido, e por fim se o usuário ja votou nessa pauta. Se tudo isso estiver de acordo ele cria o voto
 - Exemplo de Body:
 ```sh
 {
 	"userId": "726d8f49-14ec-41b0-917a-27b34fcccb87",
-	"scheduleId": "cc6fac91-6f0e-4a01-9e9d-54a0393df7b1",
 	"response": "y"
 } 
 ```
