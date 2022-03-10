@@ -16,7 +16,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service()
-public class VoteScheduleService implements IVoteScheduleService {
+public class VoteScheduleService implements VoteScheduleServiceInterface {
 
     private VoteScheduleRepository voteScheduleRepository;
     private ScheduleRepository scheduleRepository;

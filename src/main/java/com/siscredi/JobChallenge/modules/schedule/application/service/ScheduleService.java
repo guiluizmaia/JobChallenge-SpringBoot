@@ -16,7 +16,7 @@ import com.siscredi.JobChallenge.modules.schedule.domain.repository.VoteSchedule
 import org.springframework.stereotype.Service;
 
 @Service()
-public class ScheduleService implements IScheduleService{
+public class ScheduleService implements ScheduleServiceInterface{
 
     private ScheduleRepository scheduleRepository;
     private VoteScheduleRepository voteScheduleRepository;

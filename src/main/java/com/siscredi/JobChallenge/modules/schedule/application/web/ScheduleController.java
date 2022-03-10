@@ -7,8 +7,8 @@ import com.siscredi.JobChallenge.exception.BadRequestException;
 import com.siscredi.JobChallenge.exception.ResourceNotFoundException;
 import com.siscredi.JobChallenge.modules.schedule.application.dto.ScheduleDTO;
 import com.siscredi.JobChallenge.modules.schedule.application.dto.VoteScheduleDTO;
-import com.siscredi.JobChallenge.modules.schedule.application.service.IScheduleService;
-import com.siscredi.JobChallenge.modules.schedule.application.service.IVoteScheduleService;
+import com.siscredi.JobChallenge.modules.schedule.application.service.ScheduleServiceInterface;
+import com.siscredi.JobChallenge.modules.schedule.application.service.VoteScheduleServiceInterface;
 import com.siscredi.JobChallenge.modules.schedule.domain.entity.Schedule;
 import com.siscredi.JobChallenge.modules.schedule.domain.entity.VoteSchedule;
 
@@ -25,13 +25,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/schedule")
 public class ScheduleController {
-    private IScheduleService scheduleService;
-    private IVoteScheduleService voteScheduleService;
+    private ScheduleServiceInterface scheduleService;
+    private VoteScheduleServiceInterface voteScheduleService;
 
 
     public ScheduleController(
-        IScheduleService scheduleService,
-        IVoteScheduleService voteScheduleService
+        ScheduleServiceInterface scheduleService,
+        VoteScheduleServiceInterface voteScheduleService
     ){
         this.scheduleService = scheduleService;
         this.voteScheduleService = voteScheduleService;

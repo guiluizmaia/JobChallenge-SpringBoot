@@ -11,7 +11,7 @@ import com.siscredi.JobChallenge.modules.users.domain.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements UserServiceInterface{
 
     private UserRepository userRepository;
 

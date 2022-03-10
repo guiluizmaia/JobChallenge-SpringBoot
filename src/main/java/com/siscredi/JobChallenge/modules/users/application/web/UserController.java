@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.siscredi.JobChallenge.exception.BadRequestException;
 import com.siscredi.JobChallenge.exception.ResourceNotFoundException;
 import com.siscredi.JobChallenge.modules.users.application.dto.UserDTO;
-import com.siscredi.JobChallenge.modules.users.application.service.IUserService;
+import com.siscredi.JobChallenge.modules.users.application.service.UserServiceInterface;
 import com.siscredi.JobChallenge.modules.users.domain.entity.User;
 
 import org.springframework.http.HttpStatus;
@@ -24,10 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
     
-    private IUserService userService;
+    private UserServiceInterface userService;
 
     
-    public UserController(IUserService userService) {
+    public UserController(UserServiceInterface userService) {
         this.userService = userService;
     }
 

@@ -8,7 +8,7 @@ import java.util.UUID;
 import com.siscredi.JobChallenge.modules.schedule.application.dto.ScheduleDTO;
 import com.siscredi.JobChallenge.modules.schedule.domain.entity.Schedule;
 
-public interface IScheduleService {
+public interface ScheduleServiceInterface {
     List<Schedule> findAll();
     Optional<Schedule> findById(UUID id);
     Schedule create(ScheduleDTO create);
